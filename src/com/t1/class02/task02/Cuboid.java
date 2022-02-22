@@ -10,12 +10,12 @@ public class Cuboid extends Abstract3dFigure {
         this.c = c;
     }
 
-    double volume() {
+    double getVolume() {
         return a * b * c;
     }
 
 
-    double surfaceArea() {
+    double getSurfaceArea() {
         return (a * b + b * c + a * c) * 2;
     }
 

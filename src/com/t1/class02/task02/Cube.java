@@ -8,12 +8,12 @@ public class Cube extends Abstract3dFigure {
         this.a = a;
     }
 
-    double volume() {
+    double getVolume() {
         return a * a * a;
     }
 
 
-    double surfaceArea() {
+    double getSurfaceArea() {
         return 6 * a * a;
     }
 

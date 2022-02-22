@@ -6,10 +6,10 @@ public class Sphere extends Abstract3dFigure{
         super.setName(name);
         this.r = r;
     }
-    double volume() {
+    double getVolume() {
         return Math.PI*r*r*r*4/3;
     };
-    double surfaceArea() {
+    double getSurfaceArea() {
         return 4*Math.PI*r*r;
     };
 }

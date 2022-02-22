@@ -9,7 +9,7 @@ public class Execute {
         Abstract3dFigure[] figures = {new Cube("Куб 1", 10), new Cuboid("Параллелепипед 1", 1, 2, 3), new Sphere("Шар 1", 10)};
 
         for (Abstract3dFigure figure : figures) {
-            System.out.println(figure.getName() + ". Объём: " + figure.volume() + "; Площадь поверхности: " + figure.surfaceArea());
+            System.out.println(figure.getName() + ". Объём: " + figure.getVolume() + "; Площадь поверхности: " + figure.getSurfaceArea());
         }
     }
 }

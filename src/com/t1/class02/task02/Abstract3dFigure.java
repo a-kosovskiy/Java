@@ -3,9 +3,9 @@ package com.t1.class02.task02;
 abstract class Abstract3dFigure {
     private String name;
 
-    abstract double volume();
+    abstract double getVolume();
 
-    abstract double surfaceArea();
+    abstract double getSurfaceArea();
 
     public String getName() {
         return name;
