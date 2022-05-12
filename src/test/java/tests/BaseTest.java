@@ -1,9 +1,9 @@
 package tests;
 
+import framework.Browser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
     public static final String baseURL = "https://yandex.ru/";
@@ -12,14 +12,13 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
-        webDriver = new ChromeDriver();
-        webDriver.get(baseURL);
-        webDriver.manage().window().maximize();
+        Browser browser = Browser.getInstance();
+        browser.open(baseURL);
+        browser.getWebDriver().manage().window().maximize();
     }
 
     @AfterEach
     public void tearDown() {
-        webDriver.close();
+        Browser.quit();
     }
 }

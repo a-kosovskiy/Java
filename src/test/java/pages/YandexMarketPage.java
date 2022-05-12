@@ -21,10 +21,6 @@ public class YandexMarketPage extends BasePage {
     private static final String SEARCH_FIELD = "//input[@name='Поле поиска']";
     private static final String FIRST_PRODUCT_LINK = "(//article)[1]//a[@data-node-name='title']";
 
-    public YandexMarketPage(WebDriver webDriver) {
-        super(webDriver);
-    }
-
     public void viewCatalog() {
         webDriver.findElement(By.id(CATALOG_BUTTON_ID)).click();
     }
@@ -61,7 +57,9 @@ public class YandexMarketPage extends BasePage {
     }
 
     public void goToFirstProductPageInResults() {
-        webDriver.findElement(By.xpath(FIRST_PRODUCT_LINK)).click();
+        webDriver.navigate().refresh();
+        WebElement firstProduct = webDriver.findElement(By.xpath(FIRST_PRODUCT_LINK));
+        firstProduct.click();
         for (String windowHandle : webDriver.getWindowHandles()) {
             webDriver.switchTo().window(windowHandle);
         }

@@ -7,10 +7,6 @@ public class YandexMainPage extends BasePage {
 
     private static final String YANDEX_MARKET_LINK = "//ul[@class='services-new__list']//a[@data-id='market']";
 
-    public YandexMainPage(WebDriver webDriver) {
-        super(webDriver);
-    }
-
     public void goToMarketPage() {
         webDriver.findElement(By.xpath(YANDEX_MARKET_LINK)).click();
         for (String windowHandle : webDriver.getWindowHandles()) {

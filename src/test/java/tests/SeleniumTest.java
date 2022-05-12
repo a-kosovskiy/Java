@@ -10,14 +10,14 @@ public class SeleniumTest extends BaseTest{
     @Test
     @DisplayName("Заказ лакомства для кошек")
     public void orderCatTreatsTest() {
-        new YandexMainPage(webDriver).goToMarketPage();
-        YandexMarketPage yandexMarketPage = new YandexMarketPage(webDriver);
+        new YandexMainPage().goToMarketPage();
+        YandexMarketPage yandexMarketPage = new YandexMarketPage();
         yandexMarketPage.viewCatalog();
         yandexMarketPage.viewCatsTreats();
         yandexMarketPage.filterByPrice("50","150");
         yandexMarketPage.selectCourierDelivery();
         yandexMarketPage.filterByBrand("Whiskas");
         yandexMarketPage.goToFirstProductPageInResults();
-        new ProductPage(webDriver).compare();
+        new ProductPage().compare();
     }
 }
