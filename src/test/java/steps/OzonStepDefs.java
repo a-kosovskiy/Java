@@ -3,6 +3,7 @@ package steps;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
+import pages.OzonCartPage;
 import pages.OzonCatalogPage;
 import pages.OzonMainPage;
 
@@ -72,5 +73,15 @@ public class OzonStepDefs {
     public void checkCartItemTitle() {
         OzonCatalogPage page = new OzonCatalogPage();
         page.checkCartItemTitle();
+    }
+
+    @И("удаляет товар из корзины")
+    public void deleteItemFromCart() {
+        new OzonCartPage().deleteFirstItemInCart();
+    }
+
+    @Тогда("отображается пустая корзина")
+    public void checkCartIsEmpty() {
+        new OzonCartPage().checkCartIsEmpty();
     }
 }
