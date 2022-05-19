@@ -5,6 +5,7 @@ import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import pages.OzonCartPage;
 import pages.OzonCatalogPage;
+import pages.OzonItemPage;
 import pages.OzonMainPage;
 
 public class OzonStepDefs {
@@ -39,13 +40,18 @@ public class OzonStepDefs {
         page.sortByPriceAsc();
     }
 
+    @И("выбирает сортировку по размеру скидки")
+    public void sortByDiscount() {
+        new OzonCatalogPage().sortByDiscount();
+    }
+
     @Тогда("товары отображаются по возрастанию цены")
     public void checkProductsSortingByPriceAsc() {
         OzonCatalogPage page = new OzonCatalogPage();
         page.checkProductsSortingByPriceAsc();
     }
 
-    @И("переходит на страницу товара")
+    @И("переходит на страницу первого товара")
     public void goToItemPage() {
         OzonCatalogPage page = new OzonCatalogPage();
         page.goToFirstItemPage();
@@ -53,8 +59,7 @@ public class OzonStepDefs {
 
     @И("добавляет товар в корзину")
     public void addToCart() {
-        OzonCatalogPage page = new OzonCatalogPage();
-        page.addToCart();
+        new OzonItemPage().addToCart();
     }
 
     @И("переходит в корзину")
@@ -65,14 +70,12 @@ public class OzonStepDefs {
 
     @Тогда("число товаров в корзине равно {int}")
     public void checkCartItemsCount(int count) {
-        OzonCatalogPage page = new OzonCatalogPage();
-        page.checkCartItemCount(count);
+        new OzonCartPage().checkCartItemCount(count);
     }
 
     @И("название товара корректно отображается в корзине")
     public void checkCartItemTitle() {
-        OzonCatalogPage page = new OzonCatalogPage();
-        page.checkCartItemTitle();
+        new OzonItemPage().checkCartItemTitle();
     }
 
     @И("удаляет товар из корзины")
@@ -83,5 +86,45 @@ public class OzonStepDefs {
     @Тогда("отображается пустая корзина")
     public void checkCartIsEmpty() {
         new OzonCartPage().checkCartIsEmpty();
+    }
+
+    @И("указывает максимальную цену {string}")
+    public void setMaxPriceValue(String price) {
+        new OzonCatalogPage().setMaxPrice(price);
+    }
+
+    @Тогда("максимальная цена равна минимальной")
+    public void checkMaxPriceEqualsMinPrice() {
+        new OzonCatalogPage().checkMaxPriceEqualsMinPrice();
+    }
+
+    @Когда("пользователь вводит в поиске {string}")
+    public void search(String value) {
+        new OzonMainPage().search(value);
+    }
+
+    @Тогда("товар с названием {string} отображается в результах поиска")
+    public void checkItemInSearchResults(String itemTitle) {
+        new OzonMainPage().checkItemInSearchResults(itemTitle);
+    }
+
+    @Тогда("ничего не найдено")
+    public void checkNoSearchResults() {
+        new OzonMainPage().checkNoSearchResults();
+    }
+
+    @Тогда("товары отображаются по убыванию размера скидки")
+    public void checkProductsSortingByDiscountDesc() {
+        new OzonCatalogPage().checkProductsSortingByDiscountDesc();
+    }
+
+    @И("пользователь возвращается на главную страницу")
+    public void goToMainPage() {
+        new OzonCatalogPage().goToMainPage();
+    }
+
+    @Тогда("у товара указан бренд {string}")
+    public void checkItemBrand(String name) {
+        new OzonItemPage().checkBrandName(name);
     }
 }
